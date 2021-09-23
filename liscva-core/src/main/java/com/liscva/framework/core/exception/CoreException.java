@@ -35,7 +35,7 @@ public class CoreException extends RuntimeException {
 
 
     protected CoreException(final ThrowStatus throwStatus) {
-        this(throwStatus.reasonPhrase());
+        this(throwStatus.getReasonPhrase());
         setThrowStatus(throwStatus);
     }
 
@@ -45,7 +45,7 @@ public class CoreException extends RuntimeException {
     }
 
     protected CoreException(final ThrowStatus throwStatus, Throwable throwable) {
-        this(throwStatus.reasonPhrase(), throwable);
+        this(throwStatus.getReasonPhrase(), throwable);
         setThrowStatus(throwStatus);
     }
 

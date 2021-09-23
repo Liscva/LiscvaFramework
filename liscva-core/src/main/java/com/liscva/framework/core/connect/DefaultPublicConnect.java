@@ -9,13 +9,13 @@ public class DefaultPublicConnect<T> extends AbstractPublicConnect {
     protected DefaultPublicConnect(T data) {
         super();
         this.data = data;
-        this.isSuccess = true;
+        this.success = true;
     }
 
     protected DefaultPublicConnect(String msg) {
         super();
         this.msg = msg;
-        this.isSuccess = true;
+        this.success = true;
     }
 
     public static <T> FinalConnect<T> of(T data) {

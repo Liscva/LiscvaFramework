@@ -10,14 +10,14 @@ import com.liscva.framework.core.ThrowStatus;
 public class FailPublicConnect extends FinalConnect {
 
     public FailPublicConnect(ThrowStatus status) {
-        this.code = status.value();
-        this.msg = status.reasonPhrase();
-        this.isSuccess = false;
+        this.code = status.getValue();
+        this.msg = status.getReasonPhrase();
+        this.success = false;
     }
 
     public FailPublicConnect(ThrowStatus status, String msg) {
-        this.code = status.value();
+        this.code = status.getValue();
         this.msg = msg;
-        this.isSuccess = false;
+        this.success = false;
     }
 }

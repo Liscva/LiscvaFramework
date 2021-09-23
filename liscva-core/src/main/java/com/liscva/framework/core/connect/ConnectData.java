@@ -13,6 +13,9 @@ public class ConnectData<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 返回的数据对象
+     */
     protected T data;
 
     public T getData() {

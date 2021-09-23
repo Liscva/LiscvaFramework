@@ -48,18 +48,18 @@ public enum ThrowStatus {
         this.reasonPhrase = reasonPhrase;
     }
 
-    public String value() {
+    public String getValue() {
         return this.value;
     }
 
-    public String reasonPhrase() {
+    public String getReasonPhrase() {
         return this.reasonPhrase;
     }
 
     public static String resolvePhrase(String code) throws CoreException {
         for (ThrowStatus status : values()) {
-            if (status.value().equals(code) ) {
-                return status.reasonPhrase();
+            if (status.getValue().equals(code) ) {
+                return status.getReasonPhrase();
             }
         }
         throw new CoreException("无此状态码");
@@ -67,7 +67,7 @@ public enum ThrowStatus {
 
     public static ThrowStatus resolve(String code) throws CoreException {
         for (ThrowStatus status : values()) {
-            if (status.value().equals(code)) {
+            if (status.getValue().equals(code)) {
                 return status;
             }
         }

@@ -35,7 +35,7 @@ public class ExceptionAspect {
             Method method = methodSignature.getMethod();
             Exception annotation = method.getAnnotation(Exception.class);
             ThrowStatus throwStatus = annotation.value();
-            log.error(throwStatus.reasonPhrase(),e);
+            log.error(throwStatus.getReasonPhrase(),e);
             throw CoreException.build(throwStatus, e);
         }
     }

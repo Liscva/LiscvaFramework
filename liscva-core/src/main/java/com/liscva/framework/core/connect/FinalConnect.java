@@ -10,11 +10,20 @@ import lombok.Data;
 @Data
 public class FinalConnect<T> extends ConnectData implements IConnect {
 
-    protected String code = ThrowStatus.OK.value();
+    /**
+     * 返回的状态码
+     */
+    protected String code = ThrowStatus.OK.getValue();
 
+    /**
+     * 返回的消息
+     */
     protected String msg;
 
-    protected boolean isSuccess;
+    /**
+     * 请求是否成功
+     */
+    protected boolean success;
 
     @Override
     public String getCode() {
