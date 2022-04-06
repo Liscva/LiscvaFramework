@@ -1,82 +1,102 @@
 package com.liscva.framework.core.exception;
 
-import com.liscva.framework.core.ThrowStatus;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import com.liscva.framework.core.connect.FinalConnect;
+import com.liscva.framework.core.util.FoxUtil;
 
 /**
- * @author 李诗诚
- * @date 2020/7/7 12:01
+ * 框架内部逻辑发生错误抛出的异常
+ * (自定义此异常方便开发者在做全局异常处理时分辨异常类型)
+ *
  */
-@Slf4j
-@Data
 public class CoreException extends RuntimeException {
 
-    private ThrowStatus throwStatus;
+	private int code;
 
-    protected CoreException() {
+	/**
+	 * 序列化版本号
+	 */
+	private static final long serialVersionUID = 6806129545290130132L;
 
-    }
+	/**
+	 * 构建一个异常
+	 * 
+	 * @param message 异常描述信息
+	 */
+	public CoreException(String message) {
+		this(FinalConnect.CODE_ERROR,message);
+	}
 
-    public CoreException(String s) {
-        super(s);
-        log.error(s);
-    }
+	/**
+	 * 构建一个异常
+	 *
+	 * @param cause 异常对象
+	 */
+	public CoreException(Throwable cause) {
+		this(FinalConnect.CODE_ERROR,cause);
+	}
 
-    protected CoreException(String s, Throwable throwable) {
-        super(s, throwable);
-        log.error(s);
-    }
-
-    protected CoreException(ThrowStatus throwStatus, String s, Throwable throwable) {
-        this(s, throwable);
-        setThrowStatus(throwStatus);
-    }
-
-
-    protected CoreException(final ThrowStatus throwStatus) {
-        this(throwStatus.getReasonPhrase());
-        setThrowStatus(throwStatus);
-    }
-
-    protected CoreException(final ThrowStatus throwStatus, String s) {
-        this(s);
-        setThrowStatus(throwStatus);
-    }
-
-    protected CoreException(final ThrowStatus throwStatus, Throwable throwable) {
-        this(throwStatus.getReasonPhrase(), throwable);
-        setThrowStatus(throwStatus);
-    }
-
-    public static CoreException build(final ThrowStatus throwStatus, Throwable throwable) {
-        if (throwable instanceof CoreException) {
-            throw (CoreException) throwable;
-        }
-        throw new CoreException(throwStatus, throwable);
-    }
-
-    @Deprecated
-    public static CoreException build(String s, Throwable throwable) {
-        if (throwable instanceof CoreException) {
-            throw (CoreException) throwable;
-        }
-        throw new CoreException(ThrowStatus.UNKNOWN_ERROR, s, throwable);
-    }
+	public CoreException(int code, String message) {
+		super(message);
+		this.code = code;
+	}
 
 
-    public static CoreException build(final ThrowStatus throwStatus, String s) {
-        throw new CoreException(throwStatus, s);
-    }
 
-    public static CoreException build(final ThrowStatus throwStatus) {
-        throw new CoreException(throwStatus);
-    }
+	/**
+	 * 构建一个异常
+	 *
+	 * @param code 异常代码
+	 * @param cause 异常对象
+	 */
+	public CoreException(int code,Throwable cause) {
+		super(cause);
+		this.code = code;
+	}
 
-    @Deprecated
-    public static CoreException build(String s) {
-        throw new CoreException(ThrowStatus.UNKNOWN_ERROR, s);
-    }
+
+	/**
+	 * 构建一个异常
+	 * 
+	 * @param message 异常信息
+	 * @param cause 异常对象
+	 */
+	public CoreException(String message, Throwable cause) {
+		this(FinalConnect.CODE_ERROR,message, cause);
+
+	}
+
+	/**
+	 * 构建一个异常
+	 *
+	 * @param code 异常代码
+	 * @param message 异常信息
+	 * @param cause 异常对象
+	 */
+	public CoreException(int code, String message, Throwable cause) {
+		super(message, cause);
+		this.code = code;
+	}
 
 
+	/**
+	 * 如果flag==true，则抛出message异常
+	 * @param flag 标记
+	 * @param message 异常信息
+	 */
+	public static void throwBy(boolean flag, String message) {
+		if(flag) {
+			throw new CoreException(message);
+		}
+	}
+
+	/**
+	 * 如果value==null或者isEmpty，则抛出message异常
+	 * @param value 值
+	 * @param message 异常信息
+	 */
+	public static void throwByNull(Object value, String message) {
+		if(FoxUtil.isEmpty(value)) {
+			throw new CoreException(message);
+		}
+	}
 }

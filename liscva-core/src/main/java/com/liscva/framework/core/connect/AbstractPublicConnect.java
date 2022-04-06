@@ -10,7 +10,7 @@ public abstract class AbstractPublicConnect extends FinalConnect {
     /**
      * 设置code
      */
-    public abstract void setCode(String code);
+    public abstract void setCode(int code);
 
     /**
      * 设置message

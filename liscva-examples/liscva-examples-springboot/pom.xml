@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.liscva</groupId>
+    <artifactId>liscva-examples-springboot</artifactId>
+    <version>0.0.1</version>
+
+    <!-- SpringBoot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!-- 定义liscva-security版本号 -->
+    <properties>
+        <liscva-version>0.0.1</liscva-version>
+    </properties>
+
+    <dependencies>
+        <!-- SpringBoot依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- springboot启动器依赖 -->
+        <dependency>
+            <groupId>com.liscva</groupId>
+            <artifactId>liscva-security-spring-boot-starter</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- 自动装配依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

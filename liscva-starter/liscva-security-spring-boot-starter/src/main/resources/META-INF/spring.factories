@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.liscva.framework.security.spring.BeanRegister,\
+com.liscva.framework.security.spring.BeanInject

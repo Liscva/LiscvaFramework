@@ -1,19 +1,22 @@
 package com.liscva.framework.core.connect;
 
-import com.liscva.framework.core.ThrowStatus;
-import lombok.Data;
-
 /**
  * @author 李诗诚
  * @date 2020/7/7 14:14
  */
-@Data
 public class FinalConnect<T> extends ConnectData implements IConnect {
+
+    public static final int CODE_SUCCESS = 200;			// 成功状态码
+    public static final String CODE_SUCCESS_MSG = "访问成功";          // 成功消息
+
+    public static final int CODE_ERROR = 500;          // 失败状态码
+
+    public static final String CODE_ERROR_MSG = "访问失败";          // 失败消息
 
     /**
      * 返回的状态码
      */
-    protected String code = ThrowStatus.OK.getValue();
+    protected int code;
 
     /**
      * 返回的消息
@@ -26,7 +29,7 @@ public class FinalConnect<T> extends ConnectData implements IConnect {
     protected boolean success;
 
     @Override
-    public String getCode() {
+    public int getCode() {
         return this.code;
     }
 
@@ -34,5 +37,4 @@ public class FinalConnect<T> extends ConnectData implements IConnect {
     public String getMsg() {
         return this.msg;
     }
-
 }

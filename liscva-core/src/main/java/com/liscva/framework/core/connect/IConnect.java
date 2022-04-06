@@ -10,7 +10,7 @@ public interface IConnect {
      * 获取交互的代码
      * @return HTTP状态码
      */
-    String getCode();
+    int getCode();
 
 
     /**
@@ -18,6 +18,5 @@ public interface IConnect {
      * @return 提示消息
      */
     String getMsg();
-
 
 }

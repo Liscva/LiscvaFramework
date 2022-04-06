@@ -6,28 +6,38 @@ package com.liscva.framework.core.connect;
  */
 public class DefaultPublicConnect<T> extends AbstractPublicConnect {
 
-    protected DefaultPublicConnect(T data) {
+
+    protected DefaultPublicConnect() {
         super();
-        this.data = data;
+        this.code = FinalConnect.CODE_SUCCESS;
+        this.msg = FinalConnect.CODE_SUCCESS_MSG;
         this.success = true;
     }
 
+    protected DefaultPublicConnect(T data) {
+        this();
+        this.data = data;
+    }
+
     protected DefaultPublicConnect(String msg) {
-        super();
+        this();
         this.msg = msg;
-        this.success = true;
     }
 
     public static <T> FinalConnect<T> of(T data) {
         return new DefaultPublicConnect<T>(data);
     }
 
-    public static <T> FinalConnect<T> ofMsg(String msg) {
+    public static <T> FinalConnect<T> ok(String msg) {
         return new DefaultPublicConnect<T>(msg);
     }
 
+    public static <T> FinalConnect<T> ok() {
+        return new DefaultPublicConnect<T>();
+    }
+
     @Override
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

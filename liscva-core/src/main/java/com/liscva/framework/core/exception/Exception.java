@@ -1,8 +1,5 @@
 package com.liscva.framework.core.exception;
 
-
-import com.liscva.framework.core.ThrowStatus;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -16,7 +13,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Exception {
 
-    ThrowStatus value() default ThrowStatus.UNKNOWN_ERROR;
+    int code() default 200;
 
+    String msg() default "error";
 }
 
