@@ -16,6 +16,7 @@
     <modules>
         <module>liscva-plugin-security-spring-boot</module>
         <module>liscva-plugin-web-servlet</module>
+        <module>liscva-plugin-core-aop-extend</module>
     </modules>
 
 
